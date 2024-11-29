@@ -1,5 +1,5 @@
 import pandas as pd
-from data.schemas import DataSchema
+from etl.schemas import DataSchema
 
 
 def load_data(path: str) -> pd.DataFrame:

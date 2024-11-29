@@ -2,7 +2,7 @@ import pandas as pd
 import kagglehub
 from loguru import logger
 from pathlib import Path
-from data.schemas import DataSchemaRaw, DataSchema
+from etl.schemas import DataSchemaRaw, DataSchema
 
 DATASET = "willianoliveiragibin/top-12-german-companies"
 OUTPUT_DIR = Path("data") / "processed"
