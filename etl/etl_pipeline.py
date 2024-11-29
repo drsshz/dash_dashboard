@@ -4,11 +4,6 @@ from loguru import logger
 from pathlib import Path
 from etl.schemas import DataSchemaRaw, DataSchema
 
-DATASET = "willianoliveiragibin/top-12-german-companies"
-OUTPUT_DIR = Path("data") / "processed"
-output_path_NAME = "dash_data.parquet"
-
-
 def rename_columns(df: pd.DataFrame) -> pd.DataFrame:
     column_renames = {
         getattr(DataSchemaRaw, attr): getattr(DataSchema, attr)

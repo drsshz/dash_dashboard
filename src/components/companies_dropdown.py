@@ -14,7 +14,7 @@ def render(app: Dash, source: CategoriesDataSource) -> html.Div:
         Output(ids.COMPANY_DROPDOWN, "value"),
         [
             Input(ids.YEAR_DROPDOWN, "value"),
-            Input(ids.MONTH_DROPDOWN, "value"),
+            Input(ids.QUARTER_DROPDOWN, "value"),
             Input(ids.SELECT_ALL_COMPANIES_BUTTON, "n_clicks"),
         ],
     )

@@ -1,8 +1,8 @@
 from dash import Dash, html
+from src.components import quarter_dropdown
 from src.components import companies_dropdown
 from src.components import (
     year_dropdown,
-    month_dropdown,
     bar_chart,
     pie_chart,
 )
@@ -18,7 +18,7 @@ def create_layout(app: Dash, source: DataSource) -> html.Div:
                 className="dropdown-container",
                 children=[
                     year_dropdown.render(app, source),
-                    month_dropdown.render(app, source),
+                    quarter_dropdown.render(app, source),
                     companies_dropdown.render(app, source),
                 ],
             ),

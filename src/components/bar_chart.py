@@ -27,7 +27,7 @@ def render(app: Dash, source: BarChartSource) -> html.Div:
         Output(ids.BAR_CHART, "children"),
         [
             Input(ids.YEAR_DROPDOWN, "value"),
-            Input(ids.MONTH_DROPDOWN, "value"),
+            Input(ids.QUARTER_DROPDOWN, "value"),
             Input(ids.COMPANY_DROPDOWN, "value"),
         ],
     )

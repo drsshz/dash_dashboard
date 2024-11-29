@@ -12,18 +12,18 @@ class DataSource:
     def filter(
         self,
         years: Optional[list[str]],
-        months: Optional[list[str]],
+        quarters: Optional[list[str]],
         companies: Optional[list[str]],
     ) -> DataSource:
         if years is None:
             years = self.unique_years
-        if months is None:
-            months = self.unique_months
+        if quarters is None:
+            quarters = self.unique_quarters
         if companies is None:
             companies = self.unique_companies
 
         filtered_data = self._data.query(
-            "year in @years and month in @months and company in @companies"
+            "year in @years and quarter in @quarters and company in @companies"
         )
         return DataSource(filtered_data)
 
@@ -45,12 +45,12 @@ class DataSource:
         return sorted(set(self.all_years), key=int)
 
     @property
-    def all_months(self) -> list[str]:
-        return self._data[DataSchema.MONTH].to_list()
+    def all_quarters(self) -> list[str]:
+        return self._data[DataSchema.QUARTER].to_list()
 
     @property
-    def unique_months(self) -> list[str]:
-        return sorted(set(self.all_months), key=int)
+    def unique_quarters(self) -> list[str]:
+        return sorted(set(self.all_quarters), key=int)
 
     @property
     def all_companies(self) -> list[str]:

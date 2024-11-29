@@ -29,7 +29,7 @@ def render(app: Dash, source: PieChartSource) -> html.Div:
         Output(ids.PIE_CHART, "children"),
         [
             Input(ids.YEAR_DROPDOWN, "value"),
-            Input(ids.MONTH_DROPDOWN, "value"),
+            Input(ids.QUARTER_DROPDOWN, "value"),
             Input(ids.COMPANY_DROPDOWN, "value"),
         ],
     )
