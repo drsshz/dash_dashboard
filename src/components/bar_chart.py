@@ -45,6 +45,12 @@ def render(app: Dash, source: BarChartSource) -> html.Div:
             y=indicator,
             color=DataSchema.COMPANY,
         )
-        return html.Div(id=ids.BAR_CHART, children=[dcc.Graph(figure=fig)])
+        return html.Div(
+            id=ids.BAR_CHART,
+            children=[
+                html.H6(f"Bar Chart for {indicator}", className="centered-h6-heading"),
+                dcc.Graph(figure=fig),
+            ],
+        )
 
     return html.Div(id=ids.BAR_CHART)

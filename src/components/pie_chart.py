@@ -60,6 +60,12 @@ def render(app: Dash, source: PieChartSource) -> html.Div:
         fig.update_layout(margin={"t": 40, "b": 0, "l": 0, "r": 0})
         fig.update_traces(hovertemplate="%{label}<br>$%{value:.2f}<extra></extra>")
 
-        return html.Div(id=ids.PIE_CHART, children=[dcc.Graph(figure=fig)])
+        return html.Div(
+            id=ids.PIE_CHART,
+            children=[
+                html.H6(f"Pie Chart for {indicator}", className="centered-h6-heading"),
+                dcc.Graph(figure=fig),
+            ],
+        )
 
     return html.Div(id=ids.PIE_CHART)

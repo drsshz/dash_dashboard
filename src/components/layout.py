@@ -26,6 +26,7 @@ def create_layout(app: Dash, source: DataSource) -> html.Div:
             ),
             html.Hr(),
             bar_chart.render(app, source),
+            html.Hr(),
             pie_chart.render(app, source),
         ],
     )

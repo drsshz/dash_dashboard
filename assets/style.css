@@ -59,3 +59,8 @@ hr {
         grid-template-columns: 1fr;
     }
 }
+
+.centered-h6-heading {
+    text-align: center;
+    margin: 10px 0;
+}
