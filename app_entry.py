@@ -15,7 +15,7 @@ DASH_DATA_PATH = Path(__file__).parent / "data" / "processed" / "dash_data.parqu
 def run_dash_app(data_path: Path) -> None:
     data = load_data(data_path)
     app = Dash(external_stylesheets=[BOOTSTRAP])
-    app.title = "Financial dashboard"
+    app.title = "Financial dashboard of Top German companies"
     app.layout = create_layout(app, DataSource(data))
     app.run()
 
