@@ -16,7 +16,7 @@ class BarChartSource(Protocol):
         categories: Optional[list[str]],
     ) -> DataSource: ...
 
-    def create_pivot_table(self) -> pd.DataFrame: ...
+    def create_pivot_table(self, indicator: str) -> pd.DataFrame: ...
 
     @property
     def row_count(self) -> int: ...
@@ -29,19 +29,20 @@ def render(app: Dash, source: BarChartSource) -> html.Div:
             Input(ids.YEAR_DROPDOWN, "value"),
             Input(ids.QUARTER_DROPDOWN, "value"),
             Input(ids.COMPANY_DROPDOWN, "value"),
+            Input(ids.INDICATOR_DROPDOWN, "value"),
         ],
     )
     def update_bar_chart(
-        years: list[str], months: list[str], categories: list[str]
+        years: list[str], months: list[str], categories: list[str], indicator: str
     ) -> html.Div:
         filtered_source: BarChartSource = source.filter(years, months, categories)
         if not filtered_source.row_count:
             return html.Div("No data selected.")
 
         fig = px.bar(
-            filtered_source.create_pivot_table(),
+            filtered_source.create_pivot_table(indicator),
             x=DataSchema.COMPANY,
-            y=DataSchema.NET_INCOME,
+            y=indicator,
             color=DataSchema.COMPANY,
         )
         return html.Div(id=ids.BAR_CHART, children=[dcc.Graph(figure=fig)])

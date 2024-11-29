@@ -2,7 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 import pandas as pd
 from typing import Optional
-from src.data_processor.loader import DataSchema
+from etl.schemas import DataSchema
 
 
 @dataclass
@@ -27,14 +27,14 @@ class DataSource:
         )
         return DataSource(filtered_data)
 
-    def create_pivot_table(self) -> pd.DataFrame:
+    def create_pivot_table(self, indicator: str) -> pd.DataFrame:
         pt: pd.DataFrame = self._data.pivot_table(
-            values=DataSchema.NET_INCOME,
+            values=indicator,
             index=[DataSchema.COMPANY],
             aggfunc="sum",
             fill_value=0,
         )
-        return pt.reset_index().sort_values(DataSchema.NET_INCOME, ascending=False)
+        return pt.reset_index().sort_values(indicator, ascending=False)
 
     @property
     def all_years(self) -> list[str]:
@@ -67,3 +67,24 @@ class DataSource:
     @property
     def all_net_income(self) -> list[str]:
         return self._data[DataSchema.NET_INCOME].tolist()
+
+    @property
+    def all_revenue(self) -> list[str]:
+        return self._data[DataSchema.REVENUE].tolist()
+
+    @property
+    def all_assets(self) -> list[str]:
+        return self._data[DataSchema.ASSETS].tolist()
+
+    @property
+    def all_liabilities(self) -> list[str]:
+        return self._data[DataSchema.LIABILITIES].tolist()
+
+    @property
+    def unique_indicators(self):
+        return [
+            DataSchema.REVENUE,
+            DataSchema.NET_INCOME,
+            DataSchema.ASSETS,
+            DataSchema.LIABILITIES,
+        ]

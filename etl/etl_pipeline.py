@@ -4,6 +4,7 @@ from loguru import logger
 from pathlib import Path
 from etl.schemas import DataSchemaRaw, DataSchema
 
+
 def rename_columns(df: pd.DataFrame) -> pd.DataFrame:
     column_renames = {
         getattr(DataSchemaRaw, attr): getattr(DataSchema, attr)
@@ -28,10 +29,20 @@ def transform_data(dataset_path: str) -> pd.DataFrame:
     csv_file_path = Path(dataset_path) / csv_files[0]
     df = pd.read_csv(
         csv_file_path,
-        usecols=[DataSchemaRaw.COMPANY, DataSchemaRaw.NET_INCOME, DataSchemaRaw.PERIOD],
+        usecols=[
+            DataSchemaRaw.COMPANY,
+            DataSchemaRaw.REVENUE,
+            DataSchemaRaw.NET_INCOME,
+            DataSchemaRaw.LIABILITIES,
+            DataSchemaRaw.ASSETS,
+            DataSchemaRaw.PERIOD,
+        ],
         dtype={
             DataSchemaRaw.COMPANY: str,
+            DataSchemaRaw.REVENUE: float,
             DataSchemaRaw.NET_INCOME: float,
+            DataSchemaRaw.LIABILITIES: float,
+            DataSchemaRaw.ASSETS: float,
         },
         parse_dates=[DataSchemaRaw.PERIOD],
     )

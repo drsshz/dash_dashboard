@@ -27,7 +27,8 @@ def render(app: Dash, source: QuartersDataSource) -> html.Div:
             dcc.Dropdown(
                 id=ids.QUARTER_DROPDOWN,
                 options=[
-                    {"label": quarter, "value": quarter} for quarter in source.unique_quarters
+                    {"label": quarter, "value": quarter}
+                    for quarter in source.unique_quarters
                 ],
                 value=source.unique_quarters,
                 multi=True,

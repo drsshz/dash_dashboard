@@ -21,7 +21,16 @@ class PieChartSource(Protocol):
     def all_companies(self) -> list[str]: ...
 
     @property
-    def all_net_income(self) -> list[str]: ...
+    def all_net_income(self) -> list[float]: ...
+
+    @property
+    def all_revenue(self) -> list[float]: ...
+
+    @property
+    def all_assets(self) -> list[float]: ...
+
+    @property
+    def all_liabilities(self) -> list[float]: ...
 
 
 def render(app: Dash, source: PieChartSource) -> html.Div:
@@ -31,10 +40,11 @@ def render(app: Dash, source: PieChartSource) -> html.Div:
             Input(ids.YEAR_DROPDOWN, "value"),
             Input(ids.QUARTER_DROPDOWN, "value"),
             Input(ids.COMPANY_DROPDOWN, "value"),
+            Input(ids.INDICATOR_DROPDOWN, "value"),
         ],
     )
     def update_pie_chart(
-        years: list[str], months: list[str], categories: list[str]
+        years: list[str], months: list[str], categories: list[str], indicator: str
     ) -> html.Div:
         filtered_source: PieChartSource = source.filter(years, months, categories)
         if not filtered_source.row_count:
@@ -42,7 +52,7 @@ def render(app: Dash, source: PieChartSource) -> html.Div:
 
         pie = go.Pie(
             labels=filtered_source.all_companies,
-            values=filtered_source.all_net_income,
+            values=getattr(filtered_source, f"all_{indicator}"),
             hole=0.5,
         )
 
