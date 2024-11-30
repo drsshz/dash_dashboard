@@ -1,9 +1,9 @@
 from dash import Dash
 from dash_bootstrap_components.themes import BOOTSTRAP
 from etl.etl_pipeline import run_etl_pipeline
-from src.components.layout import create_layout
-from src.data_processor.source import DataSource
-from src.data_processor.loader import load_data
+from ui.components.layout import create_layout
+from ui.data_processor.source import DataSource
+from ui.data_processor.loader import load_data
 from pathlib import Path
 from loguru import logger
 

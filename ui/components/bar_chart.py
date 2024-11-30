@@ -1,11 +1,11 @@
 from dash import Dash, html, dcc
 from dash.dependencies import Input, Output
 import plotly.express as px
-from src.components import ids
-from src.data_processor.loader import DataSchema
+from ui.components import ids
+from ui.data_processor.loader import DataSchema
 from typing import Protocol, Optional
 import pandas as pd
-from src.data_processor.source import DataSource
+from ui.data_processor.source import DataSource
 
 
 class BarChartSource(Protocol):

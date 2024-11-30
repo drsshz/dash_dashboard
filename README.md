@@ -3,12 +3,18 @@
 
 A financial dashboard application for visualizing and analyzing financial data of Top 12 German Companies. Currently only the net income is used as the indicator in this app. Information about the data: https://www.kaggle.com/datasets/willianoliveiragibin/top-12-german-companies
 
+--
+## Dashboard Preview
+
+![Financial Dashboard](ui.jpg)
+
 ---
 
 ## Installation
 
 This project uses [Poetry](https://python-poetry.org/) for dependency management and packaging.
 
+---
 
 ### Steps to Install
 

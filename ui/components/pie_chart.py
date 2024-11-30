@@ -1,9 +1,9 @@
 from dash import Dash, html, dcc
 from dash.dependencies import Input, Output
 import plotly.graph_objects as go
-from src.components import ids
+from ui.components import ids
 from typing import Protocol, Optional
-from src.data_processor.source import DataSource
+from ui.data_processor.source import DataSource
 
 
 class PieChartSource(Protocol):

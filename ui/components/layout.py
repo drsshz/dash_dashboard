@@ -1,5 +1,5 @@
 from dash import Dash, html
-from src.components import (
+from ui.components import (
     year_dropdown,
     quarter_dropdown,
     company_dropdown,
@@ -7,7 +7,7 @@ from src.components import (
     bar_chart,
     pie_chart,
 )
-from src.data_processor.source import DataSource
+from ui.data_processor.source import DataSource
 
 
 def create_layout(app: Dash, source: DataSource) -> html.Div:

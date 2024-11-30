@@ -1,4 +1,4 @@
-from src.components import ids
+from ui.components import ids
 
 from dash import Dash, html, dcc
 from dash.dependencies import Input, Output
