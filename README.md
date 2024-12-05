@@ -21,7 +21,7 @@ This project uses [Poetry](https://python-poetry.org/) for dependency management
 1. Clone the repository:
    ```bash
    git clone git@github.com:drsshz/financial_dashboard.git
-   cd financial_dashboard
+   cd dash_dashboard
    ```
 
 2. Install the project dependencies using Poetry:
